@@ -283,6 +283,13 @@ button {
     justify-content: center;
 }
 
+.button__submit {
+    width: auto;
+    min-width: 200px;
+    justify-self: center;
+    grid-column: 1 / -1;
+}
+
 /* =============== HEADER & NAVIGATION =============== */
 .header {
     position: fixed;
@@ -457,14 +464,19 @@ button {
 }
 
 .home__container {
-    display: grid;
-    gap: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
     position: relative;
     z-index: 2;
+    max-width: 900px;
 }
 
 .home__data {
     text-align: center;
+    width: 100%;
 }
 
 .home__subtitle {
@@ -559,28 +571,18 @@ button {
     color: var(--text-light);
 }
 
+.home__stat-subtext {
+    font-size: var(--smaller-font-size);
+    margin-top: -0.5rem;
+}
+
 .home__image {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 300px;
+    display: none;
 }
 
 .home__image-overlay {
-    font-size: 8rem;
-    color: var(--primary-color);
-    text-align: center;
-}
-
-@media screen and (max-width: 768px) {
-    .home__image {
-        min-height: 200px;
-    }
-    
-    .home__image-overlay {
-        font-size: 5rem;
-    }
+    display: none;
 }
 
 .home__scroll {
@@ -939,38 +941,9 @@ button {
 }
 
 .about__container {
-    display: grid;
-    gap: 3rem;
-    align-items: center;
-}
-
-.about__image {
-    position: relative;
-    height: 400px;
-    background: var(--gradient-primary);
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.about__certification-badge {
-    background: var(--white-color);
-    padding: 1.5rem 2rem;
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    box-shadow: var(--shadow-lg);
-    font-weight: var(--font-bold);
-    color: var(--secondary-color);
-    font-size: var(--h3-font-size);
-}
-
-.about__certification-badge i {
-    font-size: 2rem;
-    color: var(--primary-color);
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .about__text {
@@ -1501,20 +1474,15 @@ button {
     }
     
     .home__container {
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
+        max-width: 1000px;
     }
     
     .home__data {
-        text-align: left;
+        text-align: center;
     }
     
     .home__buttons {
-        justify-content: flex-start;
-    }
-    
-    .home__blob {
-        width: 400px;
+        justify-content: center;
     }
     
     .services__container {
@@ -1531,7 +1499,7 @@ button {
     }
     
     .about__container {
-        grid-template-columns: 1fr 1fr;
+        max-width: 900px;
     }
     
     .contact__container {
