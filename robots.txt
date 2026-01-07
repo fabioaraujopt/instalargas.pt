@@ -1,0 +1,15 @@
+# robots.txt for instalargas.pt
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas (add as needed)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap
+Sitemap: https://instalargas.pt/sitemap.xml
+
+# Crawl-delay (optional, in seconds)
+# Crawl-delay: 10
+
