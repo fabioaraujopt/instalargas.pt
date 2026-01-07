@@ -327,6 +327,8 @@ button {
     justify-content: space-between;
     align-items: center;
     height: var(--header-height);
+    gap: 2rem;
+    width: 100%;
 }
 
 .nav__logo {
@@ -388,6 +390,8 @@ button {
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: var(--z-fixed);
         overflow-y: auto;
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     .nav__menu.show-menu {
@@ -398,11 +402,13 @@ button {
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        width: 100%;
     }
     
     .nav__item {
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 0.5rem;
+        width: 100%;
     }
     
     .nav__link {
@@ -447,6 +453,34 @@ button {
     width: 100%;
 }
 
+/* Phone Number in Header */
+.nav__phone {
+    display: none; /* Hidden by default, shown on desktop */
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: var(--font-semi-bold);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.nav__phone:hover {
+    background: var(--bg-color);
+    color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.nav__phone i {
+    font-size: 1.1rem;
+}
+
+.nav__phone-text {
+    font-size: var(--normal-font-size);
+}
+
 /* Desktop Navigation */
 @media screen and (min-width: 769px) {
     .nav__toggle,
@@ -454,10 +488,68 @@ button {
         display: none;
     }
     
+    .nav__menu {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex: 1;
+        justify-content: flex-end;
+    }
+    
     .nav__list {
         display: flex;
         gap: 2rem;
         align-items: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .nav__item {
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Hide mobile phone button in desktop */
+    .nav__phone-mobile {
+        display: none !important;
+    }
+    
+    /* Show desktop phone button */
+    .nav__phone:not(.nav__phone-mobile) {
+        display: flex;
+        margin-left: 1rem;
+    }
+}
+
+/* Mobile - Hide phone in header, show in menu */
+@media screen and (max-width: 768px) {
+    .nav__phone:not(.nav__phone-mobile) {
+        display: none;
+    }
+    
+    .nav__phone-mobile {
+        display: flex;
+        width: calc(100% - 2rem);
+        justify-content: center;
+        margin: 2rem auto 0;
+        padding: 1rem;
+        background: var(--gradient-primary);
+        color: var(--white-color);
+        border-radius: var(--radius-md);
+        font-weight: var(--font-bold);
+        font-size: 1.1rem;
+        box-shadow: var(--shadow-md);
+    }
+    
+    .nav__phone-mobile:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+    
+    .nav__menu {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -529,12 +621,95 @@ button {
     margin-right: auto;
 }
 
+/* Phone Number in Hero Section */
+.home__phone {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.home__phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--gradient-primary);
+    color: var(--white-color);
+    padding: 1rem 2rem;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    font-size: 1.25rem;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
+}
+
+.home__phone-link:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.home__phone-link i:first-child {
+    font-size: 1.5rem;
+}
+
+.home__phone-link i:last-child {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.home__phone-text {
+    margin-top: 0.75rem;
+    font-size: var(--small-font-size);
+    color: var(--text-light);
+    font-weight: var(--font-medium);
+}
+
+@media screen and (max-width: 768px) {
+    .home__phone-link {
+        font-size: 1.1rem;
+        padding: 0.875rem 1.5rem;
+    }
+    
+    .home__phone-link span {
+        font-size: 1rem;
+    }
+}
+
 .home__buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
     margin-bottom: 3rem;
+}
+
+.home__cta-primary {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    font-weight: var(--font-bold);
+    box-shadow: var(--shadow-lg);
+}
+
+.home__cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+@media screen and (max-width: 768px) {
+    .home__buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .home__buttons .button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .home__cta-primary {
+        font-size: 1.05rem;
+        padding: 1.1rem 2rem;
+        order: -1; /* Show first on mobile */
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -1015,6 +1190,14 @@ button {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .contact__container {
+        width: 100%;
+        gap: 2rem;
+    }
 }
 
 .contact__info {
@@ -1132,6 +1315,8 @@ button {
     box-shadow: var(--shadow-md);
     max-width: 800px;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form__group {
@@ -1170,12 +1355,21 @@ button {
 @media screen and (max-width: 768px) {
     .contact__form {
         padding: 2rem 1.5rem;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .contact__container {
+        gap: 2rem;
     }
 }
 
 @media screen and (max-width: 400px) {
     .contact__form {
         padding: 1.5rem 1rem;
+        width: 100%;
+        max-width: 100%;
     }
     
     .form__group {
@@ -1457,6 +1651,66 @@ button {
 
 .scrollup.show-scroll {
     bottom: 3rem;
+}
+
+/* Floating Contact Button (Mobile) */
+.floating-contact {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    color: var(--white-color);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    box-shadow: var(--shadow-xl);
+    z-index: var(--z-fixed);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    animation: pulse 2s infinite;
+}
+
+.floating-contact:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.floating-contact i {
+    font-size: 1.5rem;
+}
+
+.floating-contact span {
+    font-size: 0.65rem;
+    font-weight: var(--font-bold);
+    line-height: 1;
+}
+
+/* Hide on desktop, show on mobile */
+@media screen and (min-width: 769px) {
+    .floating-contact {
+        display: none;
+    }
+}
+
+/* Adjust scrollup position when floating contact is visible */
+@media screen and (max-width: 768px) {
+    .scrollup.show-scroll {
+        bottom: 8rem;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+    }
 }
 
 /* =============== ANIMATIONS =============== */
