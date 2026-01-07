@@ -2,7 +2,7 @@
 CASO DE SUPORTE - DOMINIOS.PT
 =========================================
 
-ASSUNTO: Nameservers do domínio instalargas.pt não correspondem ao painel DNS
+ASSUNTO: Pedido de configuração DNS para GitHub Pages - instalargas.pt
 
 ---
 
@@ -10,51 +10,40 @@ MENSAGEM:
 
 Bom dia,
 
-Tenho o domínio instalargas.pt e estou com um problema de configuração DNS que preciso de ajuda para resolver.
+Preciso de ajuda para configurar o DNS do domínio instalargas.pt para hospedar o meu website no GitHub Pages.
 
-SITUAÇÃO:
-No painel de gestão DNS do Dominios.pt, consigo ver e editar os registos DNS. Os nameservers mostrados no painel são:
-- dns1.host-redirect.com
-- dns2.host-redirect.com
-- dns3.host-redirect.com
-- dns4.host-redirect.com
+OBJETIVO:
+Quero que o domínio instalargas.pt aponte para o GitHub Pages.
 
-Configurei 4 registos A para apontar para os IPs do GitHub Pages:
-- 185.199.108.153
-- 185.199.109.153
-- 185.199.110.153
-- 185.199.111.153
+CONFIGURAÇÃO NECESSÁRIA:
+Por favor, podem configurar os seguintes registos DNS no domínio instalargas.pt:
 
-PROBLEMA:
-Quando faço uma consulta WHOIS ou DNS trace, os nameservers autoritativos registados são DIFERENTES:
-- ns1.dnscpanel.com
-- ns2.dnscpanel.com
-- ns3.dnscpanel.com
+4 Registos A (domínio principal):
+- instalargas.pt → 185.199.108.153
+- instalargas.pt → 185.199.109.153
+- instalargas.pt → 185.199.110.153
+- instalargas.pt → 185.199.111.153
 
-Quando consulto diretamente os servidores host-redirect.com, os registos A aparecem CORRETAMENTE.
-Quando consulto os servidores dnscpanel.com, NÃO aparecem registos A.
+1 Registo CNAME (subdomínio www):
+- www.instalargas.pt → fabioaraujopt.github.io
 
-Isto está a impedir a propagação DNS global do meu domínio.
+PROBLEMA ATUAL:
+Tentei configurar estes registos no painel de "Gestão DNS", mas a propagação DNS não está a funcionar. 
+Verificação: https://www.whatsmydns.net/#A/instalargas.pt mostra que nenhum servidor DNS global está a receber os registos.
+
+Os nameservers do domínio estão configurados como ns1-3.dnscpanel.com (default do Dominios.pt).
 
 PEDIDO:
-Podem por favor verificar e corrigir os nameservers autoritativos do domínio instalargas.pt para que correspondam aos servidores onde estou a gerir os registos DNS no vosso painel?
+Podem por favor:
+1. Verificar e configurar corretamente os registos DNS mencionados acima, OU
+2. Indicar-me qual o painel correto onde devo configurar estes registos?
 
-Os nameservers devem ser:
-- dns1.host-redirect.com
-- dns2.host-redirect.com
-- dns3.host-redirect.com
-- dns4.host-redirect.com
+DADOS:
+- Domínio: instalargas.pt
+- ID de Cliente: 108861
+- Repositório GitHub: https://github.com/fabioaraujopt/instalargas.pt
 
-OU
-
-Podem indicar-me qual o procedimento correto para sincronizar os nameservers?
-
-DADOS TÉCNICOS:
-Domínio: instalargas.pt
-ID de Cliente: 108861
-Verificação atual: https://www.whatsmydns.net/#A/instalargas.pt
-
-Agradeço a vossa ajuda urgente neste assunto.
+Agradeço a vossa ajuda.
 
 Cumprimentos,
 Fábio Araújo

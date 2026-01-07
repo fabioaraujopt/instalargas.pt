@@ -693,58 +693,62 @@
                         <!-- Honeypot for spam protection -->
                         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                         
-                        <div class="form__group">
-                            <label for="name" class="form__label">Nome *</label>
-                            <input 
-                                type="text" 
-                                id="name" 
-                                name="name" 
-                                class="form__input" 
-                                placeholder="O seu nome"
-                                required
-                            >
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="name" class="form__label">Nome *</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    class="form__input" 
+                                    placeholder="O seu nome"
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="email" class="form__label">Email *</label>
+                                <input 
+                                    type="email" 
+                                    id="email_from" 
+                                    name="email_from" 
+                                    class="form__input" 
+                                    placeholder="seuemail@exemplo.com"
+                                    required
+                                >
+                            </div>
+                        </div>
+                        
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="phone" class="form__label">Telefone</label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone" 
+                                    class="form__input" 
+                                    placeholder="+351 XXX XXX XXX"
+                                >
+                            </div>
+                            
+                            <div class="form__group">
+                                <label for="service" class="form__label">Tipo de Serviço *</label>
+                                <select id="service" name="service" class="form__input" required>
+                                    <option value="">Selecione um serviço</option>
+                                    <option value="Projeto de Engenharia">Projeto de Engenharia</option>
+                                    <option value="Instalação de Gás Natural">Instalação de Gás Natural</option>
+                                    <option value="Instalação Propano/Butano">Instalação Propano/Butano</option>
+                                    <option value="Certificação DGEG">Certificação DGEG</option>
+                                    <option value="Inspeção de Gás">Inspeção de Gás</option>
+                                    <option value="Ligação à Rede">Ligação à Rede</option>
+                                    <option value="Consultoria Técnica">Consultoria Técnica</option>
+                                    <option value="Projeto Público (Escola/Hospital)">Projeto Público (Escola/Hospital)</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
                         </div>
                         
                         <div class="form__group">
-                            <label for="email" class="form__label">Email *</label>
-                            <input 
-                                type="email" 
-                                id="email_from" 
-                                name="email_from" 
-                                class="form__input" 
-                                placeholder="seuemail@exemplo.com"
-                                required
-                            >
-                        </div>
-                        
-                        <div class="form__group">
-                            <label for="phone" class="form__label">Telefone</label>
-                            <input 
-                                type="tel" 
-                                id="phone" 
-                                name="phone" 
-                                class="form__input" 
-                                placeholder="+351 XXX XXX XXX"
-                            >
-                        </div>
-                        
-                        <div class="form__group">
-                            <label for="service" class="form__label">Tipo de Serviço *</label>
-                            <select id="service" name="service" class="form__input" required>
-                                <option value="">Selecione um serviço</option>
-                                <option value="Projeto de Engenharia">Projeto de Engenharia</option>
-                                <option value="Instalação de Gás Natural">Instalação de Gás Natural</option>
-                                <option value="Instalação Propano/Butano">Instalação Propano/Butano</option>
-                                <option value="Certificação DGEG">Certificação DGEG</option>
-                                <option value="Inspeção de Gás">Inspeção de Gás</option>
-                                <option value="Ligação à Rede">Ligação à Rede</option>
-                                <option value="Consultoria Técnica">Consultoria Técnica</option>
-                                <option value="Projeto Público (Escola/Hospital)">Projeto Público (Escola/Hospital)</option>
-                                <option value="Outro">Outro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form__group form__group--full">
                             <label for="message" class="form__label">Mensagem *</label>
                             <textarea 
                                 id="message" 
