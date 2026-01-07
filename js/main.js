@@ -149,37 +149,50 @@ document.querySelectorAll('.contact__card').forEach(card => {
     observer.observe(card);
 });
 
-/*=============== CONTACT FORM ===============*/
+/*=============== CONTACT FORM - WEB3FORMS ===============*/
 const contactForm = document.getElementById('contact-form');
 const formMessage = document.getElementById('form-message');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        // Get form values
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            service: document.getElementById('service').value,
-            message: document.getElementById('message').value
-        };
-
-        // Simulate form submission
-        // In production, this would send data to a server
-        console.log('Form submitted:', formData);
-
-        // Show success message
-        showFormMessage('Mensagem enviada com sucesso! Entraremos em contacto em breve.', 'success');
-
-        // Reset form
-        contactForm.reset();
-
-        // Hide message after 5 seconds
-        setTimeout(() => {
-            hideFormMessage();
-        }, 5000);
+        
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
+        
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> A enviar...';
+        
+        try {
+            // Get form data
+            const formData = new FormData(contactForm);
+            
+            // Send to Web3Forms
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // Success!
+                showFormMessage('✅ Mensagem enviada com sucesso! Entraremos em contacto em breve.', 'success');
+                contactForm.reset();
+            } else {
+                // Error from Web3Forms
+                throw new Error(data.message || 'Erro ao enviar formulário');
+            }
+        } catch (error) {
+            // Network or other error
+            console.error('Form submission error:', error);
+            showFormMessage('❌ Erro ao enviar mensagem. Por favor ligue: 939 628 871', 'error');
+        } finally {
+            // Restore button
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+        }
     });
 }
 
@@ -188,6 +201,11 @@ function showFormMessage(message, type) {
         formMessage.textContent = message;
         formMessage.className = `form__message ${type}`;
         formMessage.style.display = 'block';
+        
+        // Auto-hide after 8 seconds
+        setTimeout(() => {
+            hideFormMessage();
+        }, 8000);
     }
 }
 

@@ -536,44 +536,68 @@ button {
 .home__stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
+    gap: 2rem;
+    padding-top: 2.5rem;
+    margin-top: 2rem;
+    border-top: 2px solid var(--border-color);
+    margin-bottom: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+    .home__stats {
+        gap: 1.5rem;
+        padding-top: 2rem;
+        margin-bottom: 3rem;
+    }
 }
 
 @media screen and (max-width: 576px) {
     .home__stats {
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
+        padding-top: 1.5rem;
+        margin-bottom: 2.5rem;
     }
     
+    .home__stat-number {
+        font-size: 1.75rem !important;
+        font-weight: var(--font-extra-bold);
+    }
+    
+    .home__stat-text {
+        font-size: 0.7rem;
+        line-height: 1.3;
+    }
+}
+
+@media screen and (max-width: 400px) {
     .home__stat-number {
         font-size: 1.5rem !important;
     }
     
     .home__stat-text {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
 }
 
 .home__stat {
     text-align: center;
+    padding: 0.5rem;
 }
 
 .home__stat-number {
     font-size: var(--h1-font-size);
+    font-weight: var(--font-extra-bold);
     color: var(--primary-color);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    line-height: 1;
 }
 
 .home__stat-text {
     font-size: var(--small-font-size);
     color: var(--text-light);
-}
-
-.home__stat-subtext {
-    font-size: var(--smaller-font-size);
-    margin-top: -0.5rem;
+    font-weight: var(--font-medium);
+    line-height: 1.4;
 }
 
 .home__image {
@@ -597,10 +621,17 @@ button {
     color: var(--text-light);
     font-size: var(--small-font-size);
     animation: bounce 2s infinite;
+    z-index: 1;
 }
 
 .home__scroll i {
     font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .home__scroll {
+        display: none;
+    }
 }
 
 /* =============== SERVICES =============== */
@@ -870,8 +901,8 @@ button {
 }
 
 .why-choose__container {
-    display: grid;
-    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .why-choose__text {
@@ -920,19 +951,6 @@ button {
 .feature__description {
     font-size: var(--small-font-size);
     color: rgba(255, 255, 255, 0.85);
-}
-
-.why-choose__image {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 400px;
-}
-
-.image-decoration {
-    font-size: 15rem;
-    color: rgba(255, 255, 255, 0.1);
 }
 
 /* =============== ABOUT =============== */
@@ -1493,11 +1511,6 @@ button {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    .why-choose__container {
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-    }
-    
     .about__container {
         max-width: 900px;
     }
@@ -1543,6 +1556,17 @@ button {
     .home__scroll {
         bottom: 3rem;
     }
+}
+
+/* =============== UTILITY CLASSES =============== */
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
 }
 
 /* =============== DARK MODE (Optional) =============== */

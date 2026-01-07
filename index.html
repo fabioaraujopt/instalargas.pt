@@ -282,16 +282,16 @@
                     
                     <div class="home__stats">
                         <div class="home__stat">
-                            <h3 class="home__stat-number">20+</h3>
+                            <h3 class="home__stat-number">+20</h3>
                             <p class="home__stat-text">Anos Experiência</p>
                         </div>
                         <div class="home__stat">
                             <h3 class="home__stat-number">100%</h3>
-                            <p class="home__stat-text">Certificado</p>
+                            <p class="home__stat-text">Certificado DGEG</p>
                         </div>
                         <div class="home__stat">
-                            <p class="home__stat-text">Seg-Sáb</p>
-                            <p class="home__stat-text home__stat-subtext">Disponível</p>
+                            <h3 class="home__stat-number">500+</h3>
+                            <p class="home__stat-text">Projetos Realizados</p>
                         </div>
                     </div>
                 </div>
@@ -541,12 +541,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="why-choose__image">
-                        <div class="image-decoration">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -685,7 +679,20 @@
                         </div>
                     </div>
                     
-                    <form class="contact__form" id="contact-form">
+                    <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        
+                        <!-- Web3Forms Configuration -->
+                        <input type="hidden" name="access_key" value="baeb1763-b567-4e36-a22e-5a84954db58c">
+                        <input type="hidden" name="subject" value="Novo Contacto - InstalarGás.pt">
+                        <input type="hidden" name="from_name" value="InstalarGás Website">
+                        <input type="hidden" name="redirect" value="https://instalargas.pt/#contact">
+                        
+                        <!-- Recipients - Both emails will receive -->
+                        <input type="hidden" name="email" value="araujogas@hotmail.com,fabioaraujoorg@gmail.pt">
+                        
+                        <!-- Honeypot for spam protection -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        
                         <div class="form__group">
                             <label for="name" class="form__label">Nome *</label>
                             <input 
@@ -702,8 +709,8 @@
                             <label for="email" class="form__label">Email *</label>
                             <input 
                                 type="email" 
-                                id="email" 
-                                name="email" 
+                                id="email_from" 
+                                name="email_from" 
                                 class="form__input" 
                                 placeholder="seuemail@exemplo.com"
                                 required
@@ -725,13 +732,15 @@
                             <label for="service" class="form__label">Tipo de Serviço *</label>
                             <select id="service" name="service" class="form__input" required>
                                 <option value="">Selecione um serviço</option>
-                                <option value="projeto">Projeto de Engenharia</option>
-                                <option value="instalacao">Instalação de Gás</option>
-                                <option value="certificacao">Certificação DGEG</option>
-                                <option value="inspecao">Inspeção de Gás</option>
-                                <option value="consultoria">Consultoria Técnica</option>
-                                <option value="publico">Projeto Público (Escola/Hospital)</option>
-                                <option value="outro">Outro</option>
+                                <option value="Projeto de Engenharia">Projeto de Engenharia</option>
+                                <option value="Instalação de Gás Natural">Instalação de Gás Natural</option>
+                                <option value="Instalação Propano/Butano">Instalação Propano/Butano</option>
+                                <option value="Certificação DGEG">Certificação DGEG</option>
+                                <option value="Inspeção de Gás">Inspeção de Gás</option>
+                                <option value="Ligação à Rede">Ligação à Rede</option>
+                                <option value="Consultoria Técnica">Consultoria Técnica</option>
+                                <option value="Projeto Público (Escola/Hospital)">Projeto Público (Escola/Hospital)</option>
+                                <option value="Outro">Outro</option>
                             </select>
                         </div>
                         
