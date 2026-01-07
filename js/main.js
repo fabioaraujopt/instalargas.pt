@@ -2,26 +2,63 @@
 const navMenu = document.getElementById('nav-menu');
 const navToggle = document.getElementById('nav-toggle');
 const navClose = document.getElementById('nav-close');
+const body = document.body;
+
+// Prevent body scroll when menu is open
+function toggleBodyScroll(lock) {
+    if (lock) {
+        body.style.overflow = 'hidden';
+        body.style.position = 'fixed';
+        body.style.width = '100%';
+    } else {
+        body.style.overflow = '';
+        body.style.position = '';
+        body.style.width = '';
+    }
+}
 
 // Menu show
 if (navToggle) {
-    navToggle.addEventListener('click', () => {
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         navMenu.classList.add('show-menu');
+        toggleBodyScroll(true);
     });
 }
 
 // Menu hidden
 if (navClose) {
-    navClose.addEventListener('click', () => {
+    navClose.addEventListener('click', (e) => {
+        e.stopPropagation();
         navMenu.classList.remove('show-menu');
+        toggleBodyScroll(false);
     });
 }
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('show-menu')) {
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+            navMenu.classList.remove('show-menu');
+            toggleBodyScroll(false);
+        }
+    }
+});
+
+// Close menu on escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('show-menu')) {
+        navMenu.classList.remove('show-menu');
+        toggleBodyScroll(false);
+    }
+});
 
 /*=============== REMOVE MENU MOBILE ===============*/
 const navLinks = document.querySelectorAll('.nav__link');
 
 function linkAction() {
     navMenu.classList.remove('show-menu');
+    toggleBodyScroll(false);
 }
 navLinks.forEach(link => link.addEventListener('click', linkAction));
 
@@ -240,12 +277,21 @@ function animateCounter(element, target, duration = 2000) {
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+            // Skip animation if data-no-animation attribute is present
+            if (entry.target.dataset.noAnimation) {
+                return;
+            }
+            
             const statNumber = entry.target.querySelector('.home__stat-number');
             if (statNumber) {
                 entry.target.classList.add('animated');
                 const text = statNumber.textContent;
                 const number = parseInt(text.replace(/\D/g, ''));
-                animateCounter(statNumber, number);
+                
+                // Only animate if we have a valid number
+                if (!isNaN(number) && number > 0) {
+                    animateCounter(statNumber, number);
+                }
             }
         }
     });
