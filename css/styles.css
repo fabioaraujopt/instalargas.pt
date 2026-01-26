@@ -454,8 +454,14 @@ button {
 }
 
 /* Phone Number in Header */
-.nav__phone {
+.nav__phone-container {
     display: none; /* Hidden by default, shown on desktop */
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav__phone {
+    display: flex; /* Changed to flex since container controls visibility */
     align-items: center;
     gap: 0.5rem;
     color: var(--primary-color);
@@ -516,14 +522,22 @@ button {
     }
     
     /* Show desktop phone button */
-    .nav__phone:not(.nav__phone-mobile) {
+    .nav__phone-container {
         display: flex;
         margin-left: 1rem;
+    }
+    
+    .nav__phone:not(.nav__phone-mobile) {
+        display: flex;
     }
 }
 
 /* Mobile - Hide phone in header, show in menu */
 @media screen and (max-width: 768px) {
+    .nav__phone-container {
+        display: none;
+    }
+    
     .nav__phone:not(.nav__phone-mobile) {
         display: none;
     }
